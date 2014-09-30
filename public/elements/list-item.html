@@ -1,0 +1,35 @@
+<polymer-element name="list-item" attributes="data">
+
+    <style>
+        list-item li {
+            display: block;
+            padding: 0.5em;
+            margin: 0.5em 0.2em 0 0;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            vertical-align: top;
+        }
+    </style>
+
+    <template>
+        <li>
+          <content></content>
+        </li>
+    </template>
+
+    <script>
+        Polymer({
+            text: '',
+            data: undefined,
+            domReady: function() {
+                if(this.data == undefined) return;
+                draggable = $(this).draggable({
+                    revert: "invalid"
+                });
+                draggable.data('data', this.data)
+            }
+           
+        });
+    </script>
+
+</polymer-element>

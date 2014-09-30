@@ -1,0 +1,31 @@
+<body>
+  {{> trello}}
+</body>
+
+<template name="trello">
+
+  <div layout horizontal>
+    {{#each lists}}
+      {{> list}}
+    {{/each}}
+  </div>
+    
+</template>
+
+<template name="list">
+  <item-list data="{{_id}}" flex>
+    <h2>{{name}}</h2>
+    {{#each items}}
+      {{> item}}
+    {{/each}}
+    <list-item>
+      <form>
+        <input type="text" class="newInput" placeholder="Type something" />
+      </form>
+    </list-item>
+  </item-list>
+</template>
+
+<template name="item">
+  <list-item data="{{_id}}">{{text}}</list-item>
+</template>

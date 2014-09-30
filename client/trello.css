@@ -1,0 +1,21 @@
+body{
+  background: rgb(35, 113, 159);
+  font-family: sans-serif;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+input[type="text"] {
+  width:93%;
+  padding: 10px;
+  border: none;
+  background: #f0f0f0;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+}
+input[type="text"]:focus,
+input[type="text"].focus {
+  outline: 0;
+  border-bottom: solid 2px rgb(35, 113, 159);
+}
