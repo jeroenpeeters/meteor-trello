@@ -33,9 +33,28 @@ input[type="text"].focus {
   border-bottom: solid 2px rgb(35, 113, 159);
 }
 
+form.newItem {
+  overflow: hidden;
+}
 .newInput {
-  width:93%;
+  width: 100%;
 }
 .newList {
   width:20em;
+}
+.deleteList, .deleteItem {
+  color: #c9c9c9;
+}
+#footer {
+  text-align: center;
+  color:#e3e3e3;
+  font-size:8pt;
+  margin:2em;
+}
+#footer a {
+  color: #e3e3e3;
+  text-decoration: none;
+}
+#footer a:hover {
+  text-decoration: underline;
 }

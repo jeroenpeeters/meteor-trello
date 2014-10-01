@@ -3,14 +3,8 @@
 </body>
 
 <template name="trello">
-  
   <div id="header" layout horizontal>
-    <h1 flex>Trello with Meteor</h1>
-    {{#with foo}}
-    <form class="myForm" action="#">
-      <input type="text" class="newList" placeholder="A name for a new list {{name}}" />
-    </form>
-    {{/with}}
+    {{> header}}
   </div>
   
   <div id="lists" layout horizontal>
@@ -18,13 +12,30 @@
       {{> list}}
     {{/each}}
   </div>
-    
+  
+  {{> footer}}
+</template>
+
+<template name="header">
+  <h1 flex>Trello with Meteor</h1>
+  <form>
+    <input type="text" class="newList" placeholder="A name for a new list" />
+  </form>
+</template>
+
+<template name="footer">
+  <div id="footer">
+    By <a href="https://twitter.com/babbata" target="_blank">@babbata</a> &amp;
+    <a href="https://twitter.com/jeroenpeeters" target="_blank">@jeroenpeeters</a>
+  </div>
 </template>
 
 <template name="list">
-  
   <item-list data="{{_id}}" flex>
-    <h2>{{name}}</h2>
+    <div layout horizontal>
+      <h2 flex>{{name}}</h2>
+      <core-icon-button self-center class="deleteList" icon="delete"></core-icon-button>
+    </div>
     {{#each items}}
       {{> item}}
     {{/each}}
@@ -39,8 +50,8 @@
 <template name="item">
   <list-item data="{{_id}}">
     <div layout horizontal>
-      <div flex>{{text}}</div>
-      <core-icon-button class="deleteItem" icon="remove-circle-outline"></core-icon-button>
+      <div flex self-center>{{text}}</div>
+      <core-icon-button class="deleteItem" icon="close"></core-icon-button>
     </div>
   </list-item>
 </template>
