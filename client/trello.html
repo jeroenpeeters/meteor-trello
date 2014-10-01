@@ -3,8 +3,17 @@
 </body>
 
 <template name="trello">
-
-  <div layout horizontal>
+  
+  <div id="header" layout horizontal>
+    <h1 flex>Trello with Meteor</h1>
+    {{#with foo}}
+    <form class="myForm" action="#">
+      <input type="text" class="newList" placeholder="A name for a new list {{name}}" />
+    </form>
+    {{/with}}
+  </div>
+  
+  <div id="lists" layout horizontal>
     {{#each lists}}
       {{> list}}
     {{/each}}
@@ -13,13 +22,14 @@
 </template>
 
 <template name="list">
+  
   <item-list data="{{_id}}" flex>
     <h2>{{name}}</h2>
     {{#each items}}
       {{> item}}
     {{/each}}
     <list-item>
-      <form>
+      <form class="newItem">
         <input type="text" class="newInput" placeholder="Type something" />
       </form>
     </list-item>
@@ -27,5 +37,10 @@
 </template>
 
 <template name="item">
-  <list-item data="{{_id}}">{{text}}</list-item>
+  <list-item data="{{_id}}">
+    <div layout horizontal>
+      <div flex>{{text}}</div>
+      <core-icon-button class="deleteItem" icon="remove-circle-outline"></core-icon-button>
+    </div>
+  </list-item>
 </template>

@@ -7,39 +7,30 @@
           border-radius: 5px;
           background-color: #e3e3e3;
           margin-right: 0.5em;
-        }
-        item-list div {
-          position: relative;
           padding:0 1em 0 1em;
         }
         item-list ul {
+          list-style: none;
           padding:0
         }
-       
     </style>
 
     <template>
-      <div>
         <content select="h2"></content>
         <ul>
           <content select="list-item"></content>
         </ul>
-      </div>
     </template>
 
     <script>
         Polymer({
             data: undefined,
             domReady: function () {
-                console.log('item-drop loaded');
-                console.log(this)
                 $(this).droppable({
                     accept: "list-item"
                 }).on('drop', this.dropHandler)
             },
             dropHandler: function(event, detail){
-                console.log('drophandler', detail.draggable)
-                //detail.draggable.hide();
                 this.asyncFire('dropped', {list: this.data, data: detail.draggable.data('data')})
             }
 
